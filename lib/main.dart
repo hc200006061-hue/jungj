@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:confetti/confetti.dart';
 import 'firebase_options.dart';
+import 'package:flutter/foundation.dart';
 
 class Word {
   String kr;
@@ -45,7 +46,7 @@ final Map<int, List<Word>> packageWords = {
   7: [Word(kr: '가위', jp: '하사미'), Word(kr: '접착제', jp: '노리'), Word(kr: '자', jp: '죠오기'), Word(kr: '지우개', jp: '케시고무'), Word(kr: '연필', jp: '엠피츠'), Word(kr: '볼펜', jp: '보오루펭'), Word(kr: '공책', jp: '노오토'), Word(kr: '편지봉투', jp: '후우토오'), Word(kr: '상자', jp: '하코'), Word(kr: '바늘', jp: '하리'), Word(kr: '실', jp: '이토'), Word(kr: '칼', jp: '나이후'), Word(kr: '그릇', jp: '우츠와'), Word(kr: '접시', jp: '사라'), Word(kr: '젓가락', jp: '하시'), Word(kr: '숟가락', jp: '스푸웅'), Word(kr: '냄비', jp: '나베'), Word(kr: '프라이팬', jp: '후라이팡'), Word(kr: '냉장고', jp: '레이조오코'), Word(kr: '세탁기', jp: '센타쿠키'), Word(kr: '청소기', jp: '소오지키'), Word(kr: '에어컨', jp: '에아콩'), Word(kr: '선풍기', jp: '센푸우키'), Word(kr: '난로', jp: '스토오부'), Word(kr: '텔레비전', jp: '테레비'), Word(kr: '컴퓨터', jp: '콘퓨우타아'), Word(kr: '전화기', jp: '덴와'), Word(kr: '스마트폰', jp: '스마호'), Word(kr: '배터리', jp: '덴치'), Word(kr: '케이블', jp: '케에부루'), Word(kr: '침대', jp: '벳도'), Word(kr: '이불', jp: '후통'), Word(kr: '베개', jp: '마쿠라'), Word(kr: '거울', jp: '카가미'), Word(kr: '빗', jp: '쿠시'), Word(kr: '드라이기', jp: '도라이야아'), Word(kr: '화장품', jp: '케쇼오힝'), Word(kr: '향수', jp: '코오스이'), Word(kr: '비상약', jp: '히죠오야쿠'), Word(kr: '연고', jp: '낭코오'), Word(kr: '반창고', jp: '반소오코오'), Word(kr: '가구', jp: '카구'), Word(kr: '소파', jp: '소후아'), Word(kr: '책장', jp: '혼다나'), Word(kr: '옷장', jp: '탄스'), Word(kr: '장난감', jp: '오모차'), Word(kr: '인형', jp: '닝교오'), Word(kr: '게임기', jp: '게에무키'), Word(kr: '자전거', jp: '지텐샤'), Word(kr: '오토바이', jp: '오오토바이')],
   8: [Word(kr: '돕다', jp: '타스케루'), Word(kr: '살리다', jp: '이카스'), Word(kr: '죽다', jp: '시누'), Word(kr: '태어나다', jp: '우마레루'), Word(kr: '살다', jp: '스무'), Word(kr: '이사하다', jp: '힛코시스루'), Word(kr: '결혼하다', jp: '켁콘스루'), Word(kr: '이혼하다', jp: '리콩스루'), Word(kr: '약속하다', jp: '야쿠소쿠스루'), Word(kr: '사과하다', jp: '아야마루'), Word(kr: '용서하다', jp: '유루스'), Word(kr: '싸우다', jp: '타타카우'), Word(kr: '이기다', jp: '카츠'), Word(kr: '지다', jp: '마케루'), Word(kr: '포기하다', jp: '아키라메루'), Word(kr: '계속하다', jp: '츠즈케루'), Word(kr: '그만두다', jp: '야메루'), Word(kr: '변하다', jp: '카와루'), Word(kr: '바꾸다', jp: '카에루'), Word(kr: '고치다', jp: '나오스'), Word(kr: '부수다', jp: '코와스'), Word(kr: '만들다', jp: '츠쿠루'), Word(kr: '사용하다', jp: '츠카우'), Word(kr: '찾다', jp: '사가스'), Word(kr: '발견하다', jp: '미츠케루'), Word(kr: '잃어버리다', jp: '나쿠스'), Word(kr: '떨어지다', jp: '오치루'), Word(kr: '떨어뜨리다', jp: '오토스'), Word(kr: '던지다', jp: '나게루'), Word(kr: '잡다', jp: '츠카무'), Word(kr: '밀다', jp: '오스'), Word(kr: '당기다', jp: '히쿠'), Word(kr: '자르다', jp: '키루'), Word(kr: '붙이다', jp: '하루'), Word(kr: '섞다', jp: '마제루'), Word(kr: '나누다', jp: '와케루'), Word(kr: '모으다', jp: '아츠메루'), Word(kr: '늘다', jp: '후에루'), Word(kr: '줄다', jp: '헤루'), Word(kr: '남다', jp: '노코루'), Word(kr: '끝나다', jp: '오와루'), Word(kr: '시작하다', jp: '하지마루'), Word(kr: '성공하다', jp: '세이코오스루'), Word(kr: '실패하다', jp: '싯파이스루'), Word(kr: '합격하다', jp: '고오카쿠스루'), Word(kr: '불합격하다', jp: '후고오카쿠스루'), Word(kr: '취직하다', jp: '슈우쇼쿠스루'), Word(kr: '퇴사하다', jp: '타이샤스루'), Word(kr: '출장가다', jp: '슛쵸오스루'), Word(kr: '지각하다', jp: '치코쿠스루')],
   9: [Word(kr: '경제', jp: '케이자이'), Word(kr: '정치', jp: '세이지'), Word(kr: '사회', jp: '샤카이'), Word(kr: '문화', jp: '붕카'), Word(kr: '역사', jp: '레키시'), Word(kr: '지리', jp: '치리'), Word(kr: '과학', jp: '카가쿠'), Word(kr: '기술', jp: '기쥬츠'), Word(kr: '정보', jp: '죠오호오'), Word(kr: '통신', jp: '츠우싱'), Word(kr: '자연', jp: '시젱'), Word(kr: '환경', jp: '캉쿄오'), Word(kr: '평화', jp: '헤이와'), Word(kr: '전쟁', jp: '센소오'), Word(kr: '군대', jp: '군타이'), Word(kr: '법', jp: '호오리츠'), Word(kr: '규칙', jp: '키소쿠'), Word(kr: '자유', jp: '지유우'), Word(kr: '평등', jp: '뵤오도오'), Word(kr: '권리', jp: '켄리'), Word(kr: '의무', jp: '기무'), Word(kr: '책임', jp: '세키닝'), Word(kr: '노력', jp: '도료쿠'), Word(kr: '목표', jp: '모쿠효오'), Word(kr: '계획', jp: '케이카쿠'), Word(kr: '결과', jp: '켓카'), Word(kr: '원인', jp: '겐잉'), Word(kr: '이유', jp: '리유우'), Word(kr: '의미', jp: '이미'), Word(kr: '가치', jp: '카치'), Word(kr: '가격', jp: '카카쿠'), Word(kr: '세금', jp: '제이킹'), Word(kr: '월급', jp: '큐우료오'), Word(kr: '보너스', jp: '보오나스'), Word(kr: '물가', jp: '붓카'), Word(kr: '환율', jp: '카와세'), Word(kr: '주식', jp: '카부시키'), Word(kr: '투자', jp: '토시'), Word(kr: '저축', jp: '초치쿠'), Word(kr: '빚', jp: '샷킹'), Word(kr: '이자', jp: '리시'), Word(kr: '보험', jp: '호켕'), Word(kr: '계약', jp: '케이야쿠'), Word(kr: '서류', jp: '쇼루이'), Word(kr: '회의', jp: '카이기'), Word(kr: '면접', jp: '멘세츠'), Word(kr: '발표', jp: '핫표오'), Word(kr: '의견', jp: '이켕'), Word(kr: '찬성', jp: '산세에'), Word(kr: '반대', jp: '한타이')],
-  10: [Word(kr: '여행', jp: '료코오'), Word(kr: '여권', jp: '료켕'), Word(kr: '비자', jp: '비자'), Word(kr: '비행기표', jp: '코오쿠우켕'), Word(kr: '공항', jp: '쿠우코오'), Word(kr: '수하물', jp: '테니모츠'), Word(kr: '예약', jp: '요야쿠'), Word(kr: '취소', jp: '토리케시'), Word(kr: '숙소', jp: '야도'), Word(kr: '호텔', jp: '호테루'), Word(kr: '프런트', jp: '후론토'), Word(kr: '영수증', jp: '료오슈우쇼'), Word(kr: '잔돈', jp: '오츠리'), Word(kr: '환전', jp: '료가에'), Word(kr: '지도', jp: '치즈'), Word(kr: '안내소', jp: '안나이쇼'), Word(kr: '관광', jp: '캉코오'), Word(kr: '기념품', jp: '오미야게'), Word(kr: '온천', jp: '온셍'), Word(kr: '신사', jp: '진쟈'), Word(kr: '절', jp: '테라'), Word(kr: '성', jp: '시로'), Word(kr: '유적', jp: '이세키'), Word(kr: '축제', jp: '마츠리'), Word(kr: '벚꽃', jp: '사쿠라'), Word(kr: '단풍', jp: '모미지'), Word(kr: '불꽃놀이', jp: '하나비'), Word(kr: '만화', jp: '망가'), Word(kr: '애니메이션', jp: '아니메'), Word(kr: '소설', jp: '쇼오세츠'), Word(kr: '잡지', jp: '잣시'), Word(kr: '방송', jp: '호오소오'), Word(kr: '뉴스', jp: '뉴스'), Word(kr: '광고', jp: '코오코쿠'), Word(kr: '기사', jp: '키지'), Word(kr: '사건', jp: '지켕'), Word(kr: '사고', jp: '지코'), Word(kr: '범죄', jp: '한자이'), Word(kr: '경찰차', jp: '파토카아'), Word(kr: '구급차', jp: '큐우큐우샤'), Word(kr: '소방차', jp: '쇼오보오샤'), Word(kr: '지진', jp: '지싱'), Word(kr: '화산', jp: '카장'), Word(kr: '홍수', jp: '코오즈이'), Word(kr: '태풍', jp: '타이후우'), Word(kr: '피해', jp: '히가이'), Word(kr: '구조', jp: '큐우죠오'), Word(kr: '생명', jp: '이노치'), Word(kr: '미래', jp: '미라이'), Word(kr: '과거', jp: '카코')],
+  10: [Word(kr: '여행', jp: '료코오'), Word(kr: '여권', jp: '료켕'), Word(kr: '비자', jp: '비자'), Word(kr: '비행기표', jp: '코오쿠우켕'), Word(kr: '공항', jp: '쿠우코오'), Word(kr: '수하물', jp: '테니모츠'), Word(kr: '예약', jp: '요야쿠'), Word(kr: '취소', jp: '토리케시'), Word(kr: '숙소', jp: '야도'), Word(kr: '호텔', jp: '호테루'), Word(kr: '프런트', jp: '후론토'), Word(kr: '영수증', jp: '료오슈우쇼'), Word(kr: '잔돈', jp: '오츠리'), Word(kr: '환전', jp: '료가에'), Word(kr: '지도', jp: '치즈'), Word(kr: '안내소', jp: '안나이쇼'), Word(kr: '관광', jp: '캉코오'), Word(kr: '기념품', jp: '오미야게'), Word(kr: '온천', jp: '온셍'), Word(kr: '신사', jp: '진쟈'), Word(kr: '테라', jp: '테라'), Word(kr: '성', jp: '시로'), Word(kr: '유적', jp: '이세키'), Word(kr: '축제', jp: '마츠리'), Word(kr: '벚꽃', jp: '사쿠라'), Word(kr: '단풍', jp: '모미지'), Word(kr: '불꽃놀이', jp: '하나비'), Word(kr: '만화', jp: '망가'), Word(kr: '애니메이션', jp: '아니메'), Word(kr: '소설', jp: '쇼오세츠'), Word(kr: '잡지', jp: '잣시'), Word(kr: '방송', jp: '호오소오'), Word(kr: '뉴스', jp: '뉴스'), Word(kr: '광고', jp: '코오코쿠'), Word(kr: '기사', jp: '키지'), Word(kr: '사건', jp: '지켕'), Word(kr: '사고', jp: '지코'), Word(kr: '범죄', jp: '한자이'), Word(kr: '경찰차', jp: '파토카아'), Word(kr: '구급차', jp: '큐우큐우샤'), Word(kr: '소방차', jp: '쇼오보오샤'), Word(kr: '지진', jp: '지싱'), Word(kr: '화산', jp: '카장'), Word(kr: '홍수', jp: '코오즈이'), Word(kr: '태풍', jp: '타이후우'), Word(kr: '피해', jp: '히가이'), Word(kr: '구조', jp: '큐우죠오'), Word(kr: '생명', jp: '이노치'), Word(kr: '미래', jp: '미라이'), Word(kr: '과거', jp: '카코')],
 };
 
 List<Word> allWords = [];
@@ -288,7 +289,7 @@ class _HomeScreenState extends State<HomeScreen> {
         content: const SingleChildScrollView(
           child: Text(
             '원활한 학습을 위해 핵심 기능을 간단히 안내해 드립니다.\n\n'
-            '• 시험보기: 단어장의 단어 중 무작위로 출제됩니다. 정답을 알맞게 입력하면 엔터를 치지 않아도 자동으로 다음 문제로 넘어갑니다. (오답인 경우 엔터를 누르면 정답이 표시됩니다.) 오답 없이 한 번에 맞춘 횟수가 5회 누적되면 해당 단어는 마스터한 것으로 간주하여 완료한 단어로 이동합니다.\n\n'
+            '• 시험보기: 단어장의 단어 중 무작위로 출제됩니다. 앱에서는 정답 입력 시 자동으로 다음 문제로 넘어가며, 웹(인터넷)에서는 정답을 입력한 뒤 스페이스바 또는 엔터를 쳐야 넘어갑니다. (오답인 경우 엔터를 누르면 정답이 표시됩니다.) 오답 없이 한 번에 맞춘 횟수가 5회 누적되면 해당 단어는 마스터한 것으로 간주하여 완료한 단어로 이동합니다.\n\n'
             '• 단어장: 현재 학습 중 단어 목록입니다. 단어 패키지 해제로만 새로운 단어를 추가할 수 있습니다.\n\n'
             '• 모르는 단어: 시험에서 틀린 단어들이 모이는 오답 노트입니다. 모르는 단어들만 모아 재시험을 볼 수 있습니다.\n\n'
             '• 단어 패키지: 단어장의 단어가 50개 이하일 때 패키지를 해제하여 새로운 단어를 추가할 수 있습니다.\n\n'
@@ -593,7 +594,7 @@ class _QuizScreenState extends State<QuizScreen> with SingleTickerProviderStateM
         }
       }
       saveUserData();
-      
+
       setState(() {
         _currentIndex++;
         _isFirstTry = true;
@@ -604,6 +605,8 @@ class _QuizScreenState extends State<QuizScreen> with SingleTickerProviderStateM
           _showCheckmark = true;
         }
       });
+
+      FocusScope.of(context).requestFocus(_focusNode);
 
       if (_currentIndex < _currentQuizData.length) {
         _fadeController.forward(from: 0.0);
@@ -629,12 +632,14 @@ class _QuizScreenState extends State<QuizScreen> with SingleTickerProviderStateM
         _isFirstTry = false;
         saveUserData();
       }
+
       setState(() {
         _showError = true;
         _textController.clear();
       });
+      
+      FocusScope.of(context).requestFocus(_focusNode);
     }
-    FocusScope.of(context).requestFocus(_focusNode);
   }
 
   @override
@@ -686,6 +691,19 @@ class _QuizScreenState extends State<QuizScreen> with SingleTickerProviderStateM
               ));
             },
             child: const Text('오답 단어 재시험', style: TextStyle(fontSize: 20, color: Colors.white)),
+          )
+        );
+        resultChildren.add(const SizedBox(height: 15));
+      } else {
+        resultChildren.add(
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
+            onPressed: () {
+              Navigator.pushReplacement(context, MaterialPageRoute(
+                builder: (_) => const QuizScreen(quizType: 'random')
+              ));
+            },
+            child: const Text('새로운 시험보기', style: TextStyle(fontSize: 20, color: Colors.white)),
           )
         );
         resultChildren.add(const SizedBox(height: 15));
@@ -747,11 +765,30 @@ class _QuizScreenState extends State<QuizScreen> with SingleTickerProviderStateM
                           textAlign: TextAlign.center,
                           style: const TextStyle(fontSize: 24),
                           onChanged: (val) {
-                            if (_currentIndex < _currentQuizData.length && val.trim() == _currentQuizData[_currentIndex].jp) {
-                              _checkAnswer(val);
+                            if (_currentIndex < _currentQuizData.length) {
+                              bool isCorrect = false;
+                              if (kIsWeb) {
+                                // 웹 버전: 마지막에 스페이스바가 입력되었을 때만 정답 처리
+                                if (val.trim() == _currentQuizData[_currentIndex].jp && val.endsWith(' ')) {
+                                  isCorrect = true;
+                                }
+                              } else {
+                                // 모바일 앱 버전: 기존과 동일하게 정답 입력 시 즉시 처리
+                                if (val.trim() == _currentQuizData[_currentIndex].jp) {
+                                  isCorrect = true;
+                                }
+                              }
+                              
+                              if (isCorrect) {
+                                _checkAnswer(val.trim());
+                              }
                             }
                           },
-                          onSubmitted: _checkAnswer,
+                          onSubmitted: (val) {
+                            if (_currentIndex < _currentQuizData.length) {
+                              _checkAnswer(val.trim());
+                            }
+                          },
                           decoration: InputDecoration(
                             hintText: _showError ? currentWord.jp : '',
                             border: OutlineInputBorder(
